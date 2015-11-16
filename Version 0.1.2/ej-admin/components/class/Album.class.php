@@ -6,6 +6,12 @@ class Album {
     public $photo = array();
     public $size;
 
+    /*
+     * Function __construct()
+     *      Seta o nome do Album passado como parametro e chama o metodo get
+     * param string
+     * return void
+     */
     public function __construct($name) {
         $this->name = $name;
         $this->get();
@@ -42,7 +48,7 @@ class Album {
 
     /*
      * Function delete()
-     *      Insere no banco uma nova foto, sendo o endereço novo ou o passado como parametro
+     *      Deleta no banco uma foto, retornando uma mensagem de bem sucedido
      * param void
      * return int
      */
@@ -56,8 +62,8 @@ class Album {
     /*
      * Function addPhoto()
      *      Insere no banco uma nova foto, sendo o endereço novo ou o passado como parametro
-     * param int, string
-     * return int
+     * param int
+     * return string
      */
     public function addPhoto($id_adm) {
         $path = "/ej-admin"; // Diretório da index
