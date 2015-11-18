@@ -15,10 +15,10 @@ class Service {
     public $key;   /*  Nome chave do album eh o primeiro nome do servico    */
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
-     * param void
-     * return object
+     * Function set()
+     *      Insere no Banco de dados informaoes sobre "serviços" e criptografa
+     * param int
+     * return int
      */
     public function set($id_adm) {
         $this->id_adm = $id_adm;
@@ -45,10 +45,10 @@ class Service {
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
+     * Function delete()
+     *      Deleta "serviços"do banco de dados
      * param void
-     * return object
+     * return int
      */
     public function delete() {
         $this->album->delete();
@@ -57,10 +57,10 @@ class Service {
     }
 
     /*
-     * Function get()
+     * Function update()
      *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
-     * param void
-     * return object
+     * param int, int
+     * return int
      */
     public function update($id_adm, $url = 1) {
         $this->id_adm = $id_adm;
@@ -84,7 +84,7 @@ class Service {
 
     /*
      * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
+     *      Seleciona o campos do Banco de dados e o retorna
      * param void
      * return object
      */
@@ -94,18 +94,18 @@ class Service {
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
-     * param void
-     * return object
+     * Function setId()
+     *      Seta o Id no banco de dados
+     * param int
+     * return void
      */
     public function setId($id) {
         $this->id = $id;
     }
-
+    
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
+     * Function getId()
+     *      Retorna o Id
      * param void
      * return object
      */
@@ -114,10 +114,10 @@ class Service {
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
-     * param void
-     * return object
+     * Function setId_adm()
+     *      Seta o Id do administrador
+     * param int
+     * return void
      */
     public function setId_adm($id_adm) {
         $this->id_adm = $id_adm;

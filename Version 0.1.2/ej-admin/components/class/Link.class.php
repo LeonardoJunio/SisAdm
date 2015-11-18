@@ -16,10 +16,10 @@ class Link {
     public $key;   /*  Nome chave do album eh o primeiro nome do servico    */
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
-     * param void
-     * return object
+     * Function set()
+     *      seta todos os campos no Banco de dados e criptografa os valores
+     * param int 
+     * return int
      */
     public function set($id_adm) {
         $this->id_adm = $id_adm;
@@ -48,10 +48,10 @@ class Link {
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
+     * Function delete()
+     *      Deleta campo no banco de dados
      * param void
-     * return object
+     * return int
      */
     public function delete() {
         $this->album->delete();
@@ -60,10 +60,10 @@ class Link {
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
-     * param void
-     * return object
+     * Function update()
+     *       Atualiza os valores no Banco de dados e criptografa caso ainda nao esteja
+     * param int, int
+     * return int
      */
     public function update($id_adm, $url = 1) {
         $this->id_adm = $id_adm;
@@ -89,7 +89,7 @@ class Link {
 
     /*
      * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
+     *      Retorna os campos da classe Album
      * param void
      * return object
      */
@@ -99,18 +99,18 @@ class Link {
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
-     * param void
-     * return object
+     * Function setId()
+     *      Seta o id
+     * param int
+     * return void
      */
     public function setId($id) {
         $this->id = $id;
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
+     * Function getId()
+     *      Retorna id
      * param void
      * return object
      */
@@ -119,10 +119,10 @@ class Link {
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
-     * param void
-     * return object
+     * Function setId_adm()
+     *      Seta o Id do administrador
+     * param int
+     * return void
      */
     public function setId_adm($id_adm) {
         $this->id_adm = $id_adm;

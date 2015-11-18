@@ -6,8 +6,8 @@ class Mails {
     public $size;
 
     /*
-     * Function getId()
-     *      Retorna o id do usuario
+     * Function get()
+     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
      * param void
      * return int
      */

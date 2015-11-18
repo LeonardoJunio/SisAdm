@@ -82,7 +82,7 @@ class User extends Person {
     /*
      * Function setId()
      *      Armazena o id do usuario
-     * param void
+     * param int
      * return int
      */
     public function setId($id) {
@@ -94,7 +94,7 @@ class User extends Person {
      * Function set()
      *      Insere no Banco de dados todos os valores já criptgrofado checando se o texto nao esta vazio
      * param void
-     * return boolean
+     * return boolean, int
      */
     public function set() {
         $this->name = Dbcommand::post("name_user");
@@ -181,7 +181,7 @@ class User extends Person {
      * Function sendMail()
      *      Verifica os dados de entrada e valida caso o estajam corretos, e em seguida guarda a mensagem no banco
      * param void
-     * return void
+     * return object
      */
     public function sendMail() {
         $this->mails = new Mails();

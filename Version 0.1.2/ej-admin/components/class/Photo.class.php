@@ -41,7 +41,7 @@ class Photo {
 
     /*
      * Function delete()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
+     *      Deleta fotos do banco de dados
      * param void
      * return int
      */
@@ -53,7 +53,7 @@ class Photo {
     /*
      * Function update()
      *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado, aceita nome da foto vazio
-     * param int, string
+     * param int, int
      * return int
      */
     public function update($id_adm, $url = 1) {
@@ -77,18 +77,18 @@ class Photo {
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
-     * param void
-     * return object
+     * Function setId()
+     *      Seta o Id no banco de dados
+     * param int
+     * return void
      */
     public function setId($id) {
         $this->id = $id;
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
+     * Function getId()
+     *      Retorna o Id
      * param void
      * return object
      */
@@ -97,10 +97,10 @@ class Photo {
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
-     * param void
-     * return object
+     * Function setId_adm()
+     *      Seta o Id do administrador
+     * param int
+     * return void
      */
     public function setId_adm($id_adm) {
         $this->id_adm = $id_adm;
@@ -123,7 +123,7 @@ class Photo {
     }
 
     /*
-     * Function getName()
+     * Function getSendName()
      *      Verifica se o arquivo eh uma imagem, cria o nome e envia a imagem pro servidor e retorna o endereço da foto a partir do diretorio de onde o método é chamado, entrando na pasta "components/img" em seguida
      * param void
      * return string, int

@@ -6,8 +6,8 @@ class Services {
     public $size;
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
+     * Function __construct()
+     *      Retorna um metodo
      * param void
      * return object
      */
@@ -44,9 +44,9 @@ class Services {
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
-     * param void
+     * Function addService()
+     *      Adiciona um novo serviço no banco de dados
+     * param int
      * return object
      */
     public function addService($id_adm) {

@@ -6,10 +6,10 @@ class Links {
     public $size;
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
+     * Function __construct()
+     *      
      * param void
-     * return object
+     * return void
      */
     public function __construct() {
         $this->get();
@@ -45,9 +45,9 @@ class Links {
     }
 
     /*
-     * Function get()
-     *      Seleciona todos os campos do Banco de dados e retorna os valores das colunas ja descriptografado
-     * param void
+     * Function addLink()
+     *      Adiciona um novo link
+     * param int
      * return object
      */
     public function addLink($id_adm) {

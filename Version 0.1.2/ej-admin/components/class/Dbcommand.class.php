@@ -68,7 +68,7 @@ abstract class Dbcommand extends Connection {
 
     /*
      * Function delete()
-     *      Atualiza os valores no Banco de dados, precisando dos novos valores e de um condicional para especifica quais linhas serão atualizadas
+     *      Deleta no banco de dados
      * param string Nome da tabela, array Where ('Coluna' => "Valores")
      * return array Result
      */
@@ -83,7 +83,7 @@ abstract class Dbcommand extends Connection {
 
     /*
      * Function anti_injection()
-     *      Atualiza os valores no Banco de dados, precisando dos novos valores e de um condicional para especifica quais linhas serão atualizadas
+     *      
      * param string 
      * return string
      */
@@ -107,9 +107,9 @@ abstract class Dbcommand extends Connection {
 
     /*
      * Function get()
-     *      Atualiza os valores no Banco de dados, precisando dos novos valores e de um condicional para especifica quais linhas serão atualizadas
-     * param string Nome da tabela, array Dados ('Coluna' => "Valores"), array Where ('Coluna' => "Valores")
-     * return int
+     *      Retorna o nome no baco de dados
+     * param string
+     * return string
      */
     static public function get($name) {
         $name = @$_GET[$name];
@@ -117,9 +117,9 @@ abstract class Dbcommand extends Connection {
     }
 
     /*
-     * Function update()
-     *      Atualiza os valores no Banco de dados, precisando dos novos valores e de um condicional para especifica quais linhas serão atualizadas
-     * param string Nome da tabela, array Dados ('Coluna' => "Valores"), array Where ('Coluna' => "Valores")
+     * Function rows()
+     *      Quebra a string do retorno em um array
+     * param string
      * return array
      */
     static public function rows($result) {
@@ -128,10 +128,10 @@ abstract class Dbcommand extends Connection {
     }
 
     /*
-     * Function count_rows()
-     *      Atualiza os valores no Banco de dados, precisando dos novos valores e de um condicional para especifica quais linhas serão atualizadas
-     * param string Nome da tabela, array Dados ('Coluna' => "Valores"), array Where ('Coluna' => "Valores")
-     * return int
+     * Function arrays()
+     *      Quebra a string do retorno em um array
+     * param string
+     * return array
      */
     static public function arrays($result) {
         $array = $result->fetch_array();
@@ -140,8 +140,8 @@ abstract class Dbcommand extends Connection {
 
     /*
      * Function count_rows()
-     *      Atualiza os valores no Banco de dados, precisando dos novos valores e de um condicional para especifica quais linhas serão atualizadas
-     * param string Nome da tabela, array Dados ('Coluna' => "Valores"), array Where ('Coluna' => "Valores")
+     *      Verifica quandos elementos tem no array 
+     * param string
      * return int
      */
     static public function count_rows($result) {

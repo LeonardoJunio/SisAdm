@@ -85,7 +85,7 @@ class Mail {
 
     /*
      * Function setRecovery()
-     *      Retorna o id do usuario
+     *      Verifica se é possivel recuperar a senha, verificando se ja foi feito o pedido e se o email ja esta cadastrado; assim depois realiza a recuperação
      * param void
      * return int
      */
@@ -145,18 +145,19 @@ class Mail {
 
     /*
      * Function setSave()
-     *      Retorna o id do usuario
+     *      Mostra informaçoes em relação a ativação do email
+     *      Seta Informções sobre o acesso no email e realiza funçoes do mesmo
      * param void
      * return int
      */
     public function setSave() {
         /* 	  ====		Setando valores 	====	 */
         $this->title = "Conta Ativada com Sucesso";
-        $this->message = "Ol� " . $this->mail_job . ",<br>
+        $this->message = "Olá " . $this->mail_job . ",<br>
                             Sua conta foi ativada com sucesso, acesse o link para logar: <br>"
                 . $_SERVER['HTTP_HOST'] . "/ej-admin<br>
                             Login: " . $this->name . "<br><br><br>
-                            Solicita��o: " . date('d/m/Y H:i:s', strtotime(date('Y-m-d H:i:s')));
+                            Solicitação: " . date('d/m/Y H:i:s', strtotime(date('Y-m-d H:i:s')));
         /*  	==========	    ==========		 */
 
         $mail = new PHPMailer(); // Classe para enviar emails
@@ -181,7 +182,7 @@ class Mail {
 
     /*
      * Function delete()
-     *      Retorna o id do usuario
+     *      Deleta email do banco de dados
      * param void
      * return int
      */
@@ -192,7 +193,7 @@ class Mail {
 
     /*
      * Function setStatus()
-     *      Retorna o id do usuario
+     *      Seta o Statos do usuario
      * param void
      * return int
      */

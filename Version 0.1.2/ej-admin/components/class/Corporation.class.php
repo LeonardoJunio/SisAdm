@@ -22,6 +22,12 @@ class Corporation {
     public $services;
     public $links;
 
+    /*
+     * Function __construct()
+     *      Instancia novas classes
+     * param void
+     * return void
+     */
     public function __construct() {
         $this->get();
         $this->album = new Album('empresa');
@@ -31,11 +37,10 @@ class Corporation {
 
     /*
      * Function setContact()
-     *      Insere no Banco de dados todos os valores já criptgrafado checando se o texto nao esta vazio
+     *      Seta as informaoes de contato nas suas variaveis do banco de dados
      * param int
      * return int
      */
-
     public function setContact($id_adm) {
         $this->id_adm = $id_adm;
         $this->adress = Dbcommand::post("adress_corporation");
@@ -75,11 +80,10 @@ class Corporation {
 
     /*
      * Function setAbout()
-     *      Seleciona todos os campos do Banco de dados e atribui os valores das colunas aos atributos da classe ja descriptografado
+     *      Seta os dados em relação a informaçoes sobre a empresa
      * param int
      * return int
      */
-
     public function setAbout($id) {
         $this->id_adm = $id;
         $this->about = Dbcommand::post("about_corporation");
@@ -95,11 +99,10 @@ class Corporation {
 
     /*
      * Function get()
-     *      Seleciona todos os campos do Banco de dados e atribui os valores das colunas aos atributos da classe ja descriptografado
+     *      Pega as informaçoes referentes á contatos
      * param void
      * return object
      */
-
     public function get() {
         $result = Dbcommand::select('tb_empresa', array('ALL'), 'ORDER BY EMP_ID DESC LIMIT 1');
         $results = Dbcommand::rows($result);
@@ -130,7 +133,6 @@ class Corporation {
      * param void
      * return string
      */
-
     public function getName() {
         return $this->name;
     }
@@ -141,7 +143,6 @@ class Corporation {
      * param string
      * return void
      */
-
     public function setName() {
         $this->name = Dbcommand::post('name_corporation');
         $this->name = Criptografia::BASE64($this->name, 1);
