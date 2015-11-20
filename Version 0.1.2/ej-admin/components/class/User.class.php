@@ -187,6 +187,32 @@ class User extends Person {
         $this->mails = new Mails();
         return $this->mails->addMailIndex();
     }
+
+    public function verifyUser(){
+        session_start();
+        if (!isset($_SESSION['usuario_logado'])) {
+            header("location: ".$server."/login.php?msg=1");
+        }else{
+            $user->setId($_SESSION['usuario_logado']);
+            $registro = $_SESSION['registro'];
+            $limite = $_SESSION['limite'];
+            if($registro) {// verifica se a session  registro esta ativa
+             $segundos = time() - $registro;
+            } // fim da verificacao da session registro
+
+            /* verifica o tempo de inatividade 
+            se ele tiver ficado mais do tempo limite sem atividade ele destroi a session
+            se nao ele renova o tempo e ai eh contado mais o tempo limite */
+            if($segundos > $limite){
+                session_destroy();
+                zo "<script>alert('Sua sessão expirou, favor logar novamente!')</script>";    //popup de aviso
+                echo "<script>location.reload()</script>";  // atualiza para que seja redirecionado para a pagina de login
+                die();  //destroi pagina para que nao carregue
+            }else{
+              $_SESSION['registro'] = time();
+            }   // fim da verificacao de inatividade
+        }        
+    }
 }
 
 /*
