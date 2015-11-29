@@ -54,9 +54,9 @@ class Corporation {
         $this->mail = Dbcommand::post("mail_corporation");
 
         if (empty($this->adress) || empty($this->square) || empty($this->city) || empty($this->state) || empty($this->country)) {
-            return 7;
+            return "erro campos";
         } elseif (!ValidationData::cep($this->zip) || !ValidationData::mail($this->mail) || !ValidationData::phone($this->phone1) || !ValidationData::phone($this->phone2) || !ValidationData::text($this->square) || !ValidationData::text($this->city) || !ValidationData::text($this->state) || !ValidationData::text($this->country) || !ValidationData::text($this->adress)) {
-            return 18;
+            return "erro campo";
         } else {
             $this->adress = Criptografia::BASE64($this->adress, 1);
             $this->city = Criptografia::BASE64($this->city, 1);
@@ -74,7 +74,7 @@ class Corporation {
                 'EMP_ESTADO' => $this->state, 'EMP_PAIS' => $this->country,
                 'EMP_TEL1' => $this->phone1, 'EMP_TEL2' => $this->phone2,
                 'EMP_EMAIL' => $this->mail), array('EMP_ID' => $this->id));
-            return 5;
+            return "sucesso alterar dados";
         }
     }
 
@@ -88,12 +88,12 @@ class Corporation {
         $this->id_adm = $id;
         $this->about = Dbcommand::post("about_corporation");
         if (empty($this->about)) {
-            return 7;
+            return "erro campos";
         } else {
             $this->about = Criptografia::BASE64($this->about, 1);
             $this->log = Criptografia::BASE64(date("Y-m-d H:i:s"), 1);
             Dbcommand::update('tb_empresa', array('EMP_ID_ADM' => $this->id_adm, 'EMP_DATA' => $this->log, 'EMP_SOBRE' => $this->about), array('EMP_ID' => $this->id));
-            return 5;
+            return "sucesso alterar dados";
         }
     }
 

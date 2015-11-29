@@ -31,10 +31,10 @@ class Link {
         $this->album->addPhoto($this->id_adm);
 
         if (empty($this->name) || empty($this->url)) {
-            return 7;
+            return "erro campos";
         }
         if (!ValidationData::text($this->name) || !ValidationData::text($this->url)) {
-            return 18;
+            return "erro campo";
         } else {
             $this->name = Criptografia::BASE64($this->name, 1);
             $this->about = Criptografia::BASE64($this->about, 1);
@@ -43,7 +43,7 @@ class Link {
             $this->log = $this->date_in;
             $this->key = Criptografia::BASE64($this->key, 1);
             Dbcommand::insert('tb_links', array('LINK_ID_ADM', 'LINK_DATA', 'LINK_LOG', 'LINK_NOME', 'LINK_SOBRE', 'LINK_CHAVE', 'LINK_URL'), array($this->id_adm, $this->date_in, $this->log, $this->name, $this->about, $this->key, $this->url));
-            return 6;
+            return "sucesso cadastro";
         }
     }
 
@@ -56,7 +56,7 @@ class Link {
     public function delete() {
         $this->album->delete();
         Dbcommand::delete('tb_links', array('LINK_ID' => $this->id));
-        return 10;
+        return "sucesso deletar";
     }
 
     /*
@@ -76,14 +76,14 @@ class Link {
         }
 
         if (!ValidationData::text($this->name) || !ValidationData::text($this->url)) {
-            return 18;
+            return "erro campo";
         } else {
             $this->name = Criptografia::BASE64($this->name, 1);
             $this->about = Criptografia::BASE64($this->about, 1);
             $this->url = Criptografia::BASE64($this->url, 1);
             $this->log = Criptografia::BASE64(date("Y-m-d H:i:s"), 1);
             Dbcommand::update('tb_links', array('LINK_ID_ADM' => $this->id_adm, 'LINK_LOG' => $this->log, 'LINK_NOME' => $this->name, 'LINK_SOBRE' => $this->about, 'LINK_URL' => $this->url), array('LINK_ID' => $this->id));
-            return 5;
+            return "sucesso alterar dados";
         }
     }
 

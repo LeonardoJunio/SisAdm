@@ -24,10 +24,10 @@ class Photo {
         $this->url = $url;
 
         if (!empty($this->name) && !ValidationData::text($this->name)) {
-            return 18;
+            return "erro campo";
         }
         if (empty($this->url)) {
-            return 7;
+            return "erro campos";
         } else {
             $this->name = Criptografia::BASE64($this->name, 1);
             $this->url = Criptografia::BASE64($this->url, 1);
@@ -35,7 +35,7 @@ class Photo {
             $this->date_in = Criptografia::BASE64(date("Y-m-d H:i:s"), 1);
             $this->log = $this->date_in;
             Dbcommand::insert('tb_fotos', array('FOTO_ID_ADM', 'FOTO_DATA', 'FOTO_NOME', 'FOTO_NOME_ALBUM', 'FOTO_URL', 'FOTO_LOG'), array($this->id_adm, $this->date_in, $this->name, $this->albumName, $this->url, $this->log));
-            return 6;
+            return "sucesso cadastro";
         }
     }
 
@@ -47,7 +47,7 @@ class Photo {
      */
     public function delete() {
         Dbcommand::delete('tb_fotos', array('FOTO_ID' => $this->id));
-        return 10;
+        return "sucesso deletar";
     }
 
     /*
@@ -65,14 +65,14 @@ class Photo {
         }
 
         if (!empty($this->name) && ValidationData::text($this->name) == false) {
-            return 18;
+            return "erro campo" ;
         } else {
             $this->name = Criptografia::BASE64($this->name, 1);
             $this->url = Criptografia::BASE64($this->url, 1);
             $this->albumName = Criptografia::BASE64($this->albumName, 1);
             $this->log = Criptografia::BASE64(date("Y-m-d H:i:s"), 1);
             Dbcommand::update('tb_fotos', array('FOTO_ID_ADM' => $this->id_adm, 'FOTO_LOG' => $this->log, 'FOTO_NOME' => $this->name, 'FOTO_NOME_ALBUM' => $this->albumName, 'FOTO_URL' => $this->url), array('FOTO_ID' => $this->id));
-            return 5;
+            return "sucesso alterar dados" ;
         }
     }
 
@@ -136,10 +136,10 @@ class Photo {
             if (move_uploaded_file($_FILES['photo']['tmp_name'], ".." . $name)) { /*   Move a imagem   */
                 return $name;
             } else {
-                return 4;   /*   Falha ao enviar a imagem     */
+                return "erro acesso";   /*   Falha ao enviar a imagem     */
             }
         } else {
-            return 11;      /*   Arquivo invalido     */
+            return "arquivo invalido";      /*   Arquivo invalido     */
         }
     }
 }

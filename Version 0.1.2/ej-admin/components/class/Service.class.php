@@ -29,10 +29,10 @@ class Service {
         $this->album->addPhoto($this->id_adm);
 
         if (empty($this->name)) {
-            return 7;
+            return "erro campos";
         }
         if (!ValidationData::text($this->name)) {
-            return 18;
+            return "erro campo";
         } else {
             $this->name = Criptografia::BASE64($this->name, 1);
             $this->about = Criptografia::BASE64($this->about, 1);
@@ -40,7 +40,7 @@ class Service {
             $this->log = $this->date_in;
             $this->key = Criptografia::BASE64($this->key, 1);
             Dbcommand::insert('tb_servicos', array('SER_ID_ADM', 'SER_DATA', 'SER_LOG', 'SER_NOME', 'SER_SOBRE', 'SER_CHAVE'), array($this->id_adm, $this->date_in, $this->log, $this->name, $this->about, $this->key));
-            return 6;
+            return "sucesso cadastro";
         }
     }
 
@@ -53,7 +53,7 @@ class Service {
     public function delete() {
         $this->album->delete();
         Dbcommand::delete('tb_servicos', array('SER_ID' => $this->id));
-        return 10;
+        return "sucesso deletar";
     }
 
     /*
@@ -72,13 +72,13 @@ class Service {
         }
 
         if (!ValidationData::text($this->name)) {
-            return 18;
+            return "erro campo";
         } else {
             $this->name = Criptografia::BASE64($this->name, 1);
             $this->about = Criptografia::BASE64($this->about, 1);
             $this->log = Criptografia::BASE64(date("Y-m-d H:i:s"), 1);
             Dbcommand::update('tb_servicos', array('SER_ID_ADM' => $this->id_adm, 'SER_LOG' => $this->log, 'SER_NOME' => $this->name, 'SER_SOBRE' => $this->about), array('SER_ID' => $this->id));
-            return 5;
+            return "sucesso alterar dados";
         }
     }
 
